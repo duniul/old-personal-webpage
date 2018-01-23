@@ -1,0 +1,38 @@
+.presentation-header {
+    text-align: left;
+    font-size: 4em;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+}
+
+.presentation-text p {
+    margin: 0 0 1em;
+    font-size: 1.6em;
+    font-weight: 400;
+    transition: color 300ms linear;
+}
+
+.presentation-text .highlighted {
+    color: #00a79d;
+}
+
+.presentation-text.tldr p {
+    color: rgba(0, 0, 0, 0.15);
+}
+
+.presentation .tldr-button.button {
+    min-width: 180px;
+    transition: background-color 300ms linear;
+}
+
+.presentation .tldr-button.button:hover {
+    background-color: #cdcecf !important;
+}
+
+.presentation .tldr-button.active.button {
+    background-color: #00a79d !important;
+}
+
+.presentation .tldr-button.active.button:hover {
+    background-color: #009389 !important;
+}
