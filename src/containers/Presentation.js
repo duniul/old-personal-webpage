@@ -1,17 +1,9 @@
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
-import { Button, Container, Grid, Image } from 'semantic-ui-react';
-import HalfwayAvatar from '../assets/me-right-disgust.svg';
-import QuietAvatar from '../assets/me-right-quiet.svg';
-import TalkyAvatar from '../assets/me-right.svg';
+import { Button, Container, Grid } from 'semantic-ui-react';
+import Avatar from '../components/Avatar';
 import SpeechBubble from '../components/SpeechBubble';
 import './presentation.css';
-
-const avatars = {
-    'talky': TalkyAvatar,
-    'halfway': HalfwayAvatar,
-    'quiet': QuietAvatar
-};
 
 class Presentation extends React.PureComponent {
     constructor(props) {
@@ -23,17 +15,12 @@ class Presentation extends React.PureComponent {
     }
 
     onClickTLDR = () => {
-        this.triggerAvatarTransition();
         this.setState({ showTLDR: !this.state.showTLDR });
     };
 
-    triggerAvatarTransition = () => {
-        setTimeout(() => this.setState({ avatar: 'halfway' }), 100);
-        setTimeout(() => this.setState({ avatar: this.state.showTLDR ? 'quiet' : 'talky' }), 200);
-    };
 
     render() {
-        const { showTLDR, avatar } = this.state;
+        const { showTLDR } = this.state;
         const socialIconProps = {
             style: { height: 40, width: 40, marginLeft: '0.2em' }
         };
@@ -44,7 +31,7 @@ class Presentation extends React.PureComponent {
                     <Grid relaxed stackable verticalAlign="middle">
                         <Grid.Row>
                             <Grid.Column width={4}>
-                                <Image src={avatars[avatar]} style={{ width: 234, height: 300, margin: '0 auto' }} />
+                                <Avatar happy={!showTLDR} />
                             </Grid.Column>
                             <Grid.Column width={12}>
                                 <SpeechBubble>
