@@ -41,7 +41,7 @@ class Presentation extends React.PureComponent {
                                 </h1>
                                 <div className={`presentation-text ${showTLDR ? 'tldr' : ''}`}>
                                     <p style={{ marginBottom: '0.4em' }}>
-                                        A <span className="highlighted">Swedish</span> man who likes to tinker with things, like code, hardware and/or Legos.
+                                        A <span className="highlighted">Swedish</span> man who likes to tinker with things, like code, hardware or Legos.
                                         I currently work as a <span className="highlighted">full-stack developer</span> at Com Hem <span className="highlighted">in Stockholm</span>.
                                     </p>
                                     <p>
