@@ -45,7 +45,7 @@ class Avatar extends React.PureComponent {
 
 
     render() {
-        return <img className="avatar" src={avatarMoods[this.state.moodIndex]} />;
+        return <img className="avatar" alt="" src={avatarMoods[this.state.moodIndex]} />;
     }
 }
 
