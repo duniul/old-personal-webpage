@@ -21,7 +21,7 @@
 }
 
 .presentation .tldr-button.button {
-    min-width: 180px;
+    min-width: 210px;
     transition: background-color 300ms linear;
 }
 

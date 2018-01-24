@@ -74,7 +74,7 @@ class Presentation extends React.PureComponent {
                                         size="big"
                                         onClick={this.onClickTLDR}
                                     >
-                                        {showTLDR ? 'Tell me more' : 'TL;DR'}
+                                        {showTLDR ? 'Give me the deets!' : 'TL;DR'}
                                     </Button>
                                 </SpeechBubble>
                             </Grid.Column>
