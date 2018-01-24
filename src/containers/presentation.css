@@ -1,8 +1,26 @@
+.presentation {
+    padding: 8em 2em 0;
+}
+
 .presentation-header {
     text-align: left;
     font-size: 4em;
     font-weight: 600;
     margin-bottom: 0.2em;
+}
+
+.social-links {
+    float: right;
+    margin-top: -5px;
+}
+
+.social-links > .social-icon {
+    height: 45px !important;
+    width: 45px !important;
+}
+
+.social-links > .social-icon:not(:first-child) {
+    margin-left: 8px !important;
 }
 
 .presentation-text p {
@@ -35,4 +53,26 @@
 
 .presentation .tldr-button.active.button:hover {
     background-color: #009389 !important;
+}
+
+@media (max-width: 993px) {
+    .presentation {
+        padding-top: 2em;
+    }
+
+    .social-links {
+        width: 100%;
+        margin-bottom: 0.2em;
+        float: none;
+    }
+}
+
+@media (max-width: 645px) {
+    .presentation-header {
+        font-size: 3.2em;
+    }
+
+    .presentation-text {
+        font-size: 0.9em;
+    }
 }
