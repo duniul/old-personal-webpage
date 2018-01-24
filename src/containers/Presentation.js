@@ -1,6 +1,6 @@
 import React from 'react';
 import { SocialIcon } from 'react-social-icons';
-import { Button, Grid } from 'semantic-ui-react';
+import { Button, Container, Grid } from 'semantic-ui-react';
 import Avatar from '../components/Avatar';
 import SpeechBubble from '../components/SpeechBubble';
 import './presentation.css';
@@ -23,7 +23,7 @@ class Presentation extends React.PureComponent {
         const { showTLDR } = this.state;
 
         return (
-            <div className="presentation">
+            <Container className="presentation">
                 <Grid relaxed stackable verticalAlign="middle">
                     <Grid.Row>
                         <Grid.Column width={4}>
@@ -63,7 +63,7 @@ class Presentation extends React.PureComponent {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </div>
+            </Container>
         );
     }
 }

@@ -68,6 +68,10 @@
 }
 
 @media (max-width: 645px) {
+    .presentation {
+        padding: 2em 0.5em;
+    }
+
     .presentation-header {
         font-size: 3.2em;
     }
