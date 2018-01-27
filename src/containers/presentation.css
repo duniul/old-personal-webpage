@@ -34,6 +34,14 @@
     color: #00a79d;
 }
 
+.presentation-text a.highlighted {
+    text-decoration: underline;
+}
+
+.presentation-text a.highlighted:hover {
+    color: #006769;
+}
+
 .presentation-text.tldr p {
     color: rgba(0, 0, 0, 0.15);
 }

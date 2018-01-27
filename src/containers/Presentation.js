@@ -41,13 +41,25 @@ class Presentation extends React.PureComponent {
                                 </h1>
                                 <div className={`presentation-text ${showTLDR ? 'tldr' : ''}`}>
                                     <p style={{ marginBottom: '0.4em' }}>
-                                        A <span className="highlighted">Swedish</span> man who likes to tinker with things, like code, hardware or Legos.
+                                        A <span className="highlighted">Swedish</span> man who likes to tinker with things, like code, hard&shy;ware or Legos.
                                         I currently work as a <span className="highlighted">full-stack developer</span> at Com Hem <span className="highlighted">in Stockholm</span>.
                                     </p>
                                     <p>
                                         I love to create things and challenge myself, like trying out odd new programming languages,
-                                        even though I am most <span className="highlighted">proficient in</span> mainstream languages
+                                        even though I am most <span className="highlighted">proficient in</span> main&shy;stream languages
                                         like <span className="highlighted">JavaScript</span> and <span className="highlighted">Java</span>.
+                                    </p>
+                                    <p>
+                                        I am also an avid <span className="highlighted">gamer</span>, and have <span className="highlighted">dabbled in game modding</span> as a
+                                        hobby.
+                                        I published a couple of the ones I made for Fallout 4, and they now have <span className="highlighted">over a million downloads</span> and
+                                        counting. If you want, you can&nbsp;
+                                        <a className="highlighted"
+                                           href="https://www.nexusmods.com/users/935126?tab=user+files"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                            check them out here
+                                        </a>.
                                     </p>
                                 </div>
                                 <Button
