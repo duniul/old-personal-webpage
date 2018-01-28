@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './Main';
 import './main.css';
+import registerServiceWorker from './registerServiceWorker';
 
 const rootElement = document.getElementById('root');
 const renderApp = AppComponent => {
@@ -9,9 +10,7 @@ const renderApp = AppComponent => {
 };
 
 renderApp(Main);
-
-// TODO use service worker with HTTPS
-// registerServiceWorker();
+registerServiceWorker();
 
 if (module.hot) {
     // do not change the require string to a variable, for some reason it breaks hot reloading
