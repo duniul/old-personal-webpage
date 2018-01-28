@@ -165,15 +165,8 @@ class SpeechBubble extends React.PureComponent {
                     </p>
                     <p>
                         I am also an avid <span className="highlighted">gamer</span>, and have <span className="highlighted">dabbled in game modding</span> as a
-                        hobby.
-                        I published a couple of the ones I made for Fallout 4, and they now have <span className="highlighted">over a million downloads</span> and
-                        counting. If you want, you can&nbsp;
-                        <a className="highlighted"
-                           href="https://www.nexusmods.com/users/935126?tab=user+files"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            check them out here
-                        </a>.
+                        hobby. I published a couple of the ones I made for Fallout 4, and they now have <span className="highlighted">over a million downloads</span> and
+                        counting.
                     </p>
                 </div>
             </React.Fragment>
