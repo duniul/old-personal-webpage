@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import AvatarConfused from '../assets/avatar-confused.svg';
 import AvatarDisappointed from '../assets/avatar-disappointed.svg';
 import AvatarHappy from '../assets/avatar-happy.svg';
-import { simpleDebounce } from '../util';
+import { simpleDebounce } from '../common/util';
 import './avatar.css';
 
 const avatarMoods = [
@@ -25,7 +26,7 @@ class Avatar extends React.PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.happy !== nextProps.happy) {
+        if (this.props.tldr !== nextProps.tldr) {
             this.debouncedTransition();
         }
     }
@@ -38,8 +39,8 @@ class Avatar extends React.PureComponent {
     };
 
     triggerTransitionStep = () => {
-        this.setState(({ moodIndex }, { happy }) => {
-            const newMoodIndex = happy ? moodIndex + 1 : moodIndex - 1;
+        this.setState(({ moodIndex }, { tldr }) => {
+            const newMoodIndex = tldr ? moodIndex - 1 : moodIndex + 1;
             if (!!avatarMoods[newMoodIndex]) {
                 return { moodIndex: newMoodIndex };
             }
@@ -55,7 +56,11 @@ class Avatar extends React.PureComponent {
 }
 
 Avatar.propTypes = {
-    happy: PropTypes.bool
+    tldr: PropTypes.bool
 };
 
-export default Avatar;
+const mapStateToProps = ({ tldr }) => ({
+    tldr
+});
+
+export default connect(mapStateToProps)(Avatar);

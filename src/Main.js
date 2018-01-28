@@ -1,14 +1,22 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { Provider } from 'react-redux';
 import Presentation from './containers/Presentation';
 
-class Root extends React.Component {
+class Main extends React.Component {
     render() {
         return (
             <div className="main">
-                <Presentation />
+                <Provider store={this.props.store}>
+                    <Presentation />
+                </Provider>
             </div>
         );
     }
 }
 
-export default Root;
+Main.propTypes = {
+    store: PropTypes.object
+};
+
+export default Main;
