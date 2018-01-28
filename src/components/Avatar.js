@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Transition } from 'semantic-ui-react';
 import AvatarConfused from '../assets/avatar-confused.svg';
 import AvatarDisappointed from '../assets/avatar-disappointed.svg';
 import AvatarHappy from '../assets/avatar-happy.svg';
@@ -51,7 +52,11 @@ class Avatar extends React.PureComponent {
 
 
     render() {
-        return <img className="avatar" alt="" src={avatarMoods[this.state.moodIndex]} />;
+        return (
+            <Transition visible animation="tada" duration={600} transitionOnMount>
+                <img className="avatar" alt="" src={avatarMoods[this.state.moodIndex]} />
+            </Transition>
+        );
     }
 }
 

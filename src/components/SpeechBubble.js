@@ -2,10 +2,30 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { SocialIcon } from 'react-social-icons';
+import { Button, Divider } from 'semantic-ui-react';
+import Hadouken from '../assets/hadouken.png';
 import { PAGES } from '../common/constants';
+import { setPage, toggleTLDR } from '../redux/actions';
 import './speech-bubble.css';
 
 class SpeechBubble extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            faded: true
+        };
+    }
+
+    componentDidMount() {
+        setTimeout(() => this.setState({ faded: false }), 600);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.page !== nextProps.page) {
+            this.setState({ faded: true });
+            setTimeout(() => this.setState({ faded: false }), 200);
+        }
+    }
 
     renderHeader = (title) => {
         return (
@@ -20,13 +40,121 @@ class SpeechBubble extends React.PureComponent {
         );
     };
 
+    renderOptions = () => {
+        const { tldr, page, lastPage, onSetPage, onToggleTLDR } = this.props;
+        const pageOptions = [{
+            page: PAGES.INTRO,
+            title: 'Who are you again?'
+        }, {
+            page: PAGES.MODS,
+            title: 'Tell me more about those mods.'
+        }, {
+            page: PAGES.PROJECTS,
+            title: 'What else have you done?'
+        }];
+
+        return (
+            <div className="options">
+                <Divider />
+                <Button.Group fluid vertical compact>
+                    {pageOptions
+                        .filter(option => option.page !== (this.state.faded ? lastPage : page))
+                        .map(option => {
+                            return (
+                                <Button key={option.page} size="big" onClick={onSetPage(option.page)} style={{ marginBottom: 4 }}>
+                                    -&ensp;{option.title}
+                                </Button>
+                            );
+                        })}
+                    <Button className="tldr-button" size="big" onClick={onToggleTLDR} style={{ marginBottom: 4 }} toggle active={tldr}>
+                        -&ensp;{tldr ? 'Sorry, you can talk again.' : 'You talk too much, just give me the essentials!'}
+                    </Button>
+                </Button.Group>
+            </div>
+        );
+    };
+
+    renderProjectsPage = () => {
+        const { tldr } = this.props;
+        return (
+            <React.Fragment>
+                {this.renderHeader('Other projects')}
+                <div className={`presentation-text ${tldr ? 'tldr' : ''}`}>
+                    <p>
+                        Well, during my time at Com Hem I built <span className="highlighted">a web based, in-house CRM-system</span> from scratch, together
+                        with four other people. It's a modern, fast SPA built with React.js, Java and Oracle. The system has been my primary focus at work.
+                    </p>
+                    <p>
+                        I have also been a part of several hackathons and side projects at Com Hem. Together with some colleagues I
+                        built <span className="highlighted">an online, interactive map of the company office</span> to help new and/or confused
+                        employees find their way around. We also created <span className="highlighted">a service for customers to configure their modem online</span>,
+                        without the hazzle of having to manually log into it.
+                    </p>
+                    <p>
+                        All of these projects were made at and for Com Hem, so I am sadly not allowed to share any in-depth information or source code for them.
+                        However, there are others that I have been working on during my spare time which I am able to share.
+                    </p>
+                    <p>
+                        I <span className="highlighted">wrote a game engine</span> from scratch in Java, and <span className="highlighted">created my own game with it</span>.
+                        The game is like a poor man's Duck Game where you play as a cat shooting other cats
+                        with <img src={Hadouken} alt="" style={{ height: '0.8em' }} /> hadoukens.
+                        Since I only had about two weeks to make both the engine and the game, I didn't have time polish it enough. Maybe I'll pick it up again some day?
+                    </p>
+                    <p>
+                        Finally, there's <span className="highlighted">this website</span>.
+                        It's a new project of mine, and hopefully it will grow into something nice.
+                    </p>
+                </div>
+            </React.Fragment>
+        );
+    };
+
+    renderModsPage = () => {
+        const { tldr } = this.props;
+        return (
+            <React.Fragment>
+                {this.renderHeader('My mods')}
+                <div className={`presentation-text ${tldr ? 'tldr' : ''}`}>
+                    <p>
+                        If there is something I feel like I am missing in a game, you can be sure that I will try to either find a way to fix it, or create one on my own.
+                        I usually don't release them, but <span className="highlighted">I made some mods for Fallout 4</span> that I thought could be useful to others.
+                    </p>
+
+                    <p>
+                        The most popular one is <span className="highlighted">Crafting Workbenches</span>, which allows players
+                        to <span className="highlighted">craft items from mater&shy;ials</span>. It also serves as
+                        a <span className="highlighted">plat&shy;form for modders</span> to make their own creations
+                        craft&shy;able in the game. It is currently in the top 30 of the most endorsed Fallout 4 mods
+                        of all time, with <span className="highlighted">over a million downloads</span>.
+                    </p>
+
+                    <p>
+                        The <span className="highlighted">Armor and Weapon Keywords Community Resource</span> is a frame&shy;work
+                        to <span className="highlighted">help modders</span> make their creations compatible with each
+                        other. I joined the project in the early stages and <span className="highlighted">contributed code</span> from Crafting Workbenches. I also created many
+                        of its community patches. It is currently the <span className="highlighted">most downloaded Fallout 4 mod of all time</span>.
+                    </p>
+
+                    <p>
+                        I also <span className="highlighted">created a number of smaller mods</span>.
+                        One <span className="highlighted">gives players the option to track companions</span>,
+                        a feature which was later adopted by the game developers themselves.
+                        Another one <span className="highlighted">allows players to rename characters</span> in
+                        the game using simple batch commands. Finally, <span className="highlighted">lets players aim great distances</span> with
+                        the games assisted aiming interface, V.A.T.S.
+                    </p>
+                </div>
+            </React.Fragment>
+        );
+    };
+
     renderIntroPage = () => {
         const { tldr } = this.props;
         return (
             <React.Fragment>
                 {this.renderHeader('Hi, I\'m Daniel')}
                 <div className={`presentation-text ${tldr ? 'tldr' : ''}`}>
-                    <p style={{ marginBottom: '0.4em' }}>
+                    <p>
                         A <span className="highlighted">Swedish</span> man who likes to tinker with things, like code, hard&shy;ware or Legos.
                         I currently work as a <span className="highlighted">full-stack developer</span> at Com Hem <span className="highlighted">in Stockholm</span>.
                     </p>
@@ -53,18 +181,25 @@ class SpeechBubble extends React.PureComponent {
     };
 
     getPageContent = () => {
-        const { page } = this.props;
-        switch (page) {
+        const { page, lastPage } = this.props;
+        const pageToShow = this.state.faded ? lastPage : page;
+        switch (pageToShow) {
             case PAGES.INTRO:
                 return this.renderIntroPage();
+            case PAGES.MODS:
+                return this.renderModsPage();
+            case PAGES.PROJECTS:
+                return this.renderProjectsPage();
             default:
         }
     };
 
     render() {
+        const { faded } = this.state;
         return (
-            <div className="speech-bubble">
+            <div className="speech-bubble" style={{ opacity: faded ? 0 : 1 }}>
                 {this.getPageContent()}
+                {this.renderOptions()}
             </div>
         );
     }
@@ -72,12 +207,21 @@ class SpeechBubble extends React.PureComponent {
 
 SpeechBubble.propTypes = {
     tldr: PropTypes.bool,
-    page: PropTypes.string
+    page: PropTypes.string,
+    lastPage: PropTypes.string,
+    onSetPage: PropTypes.func,
+    onToggleTLDR: PropTypes.func
 };
 
-const mapStateToProps = ({ tldr, page }) => ({
+const mapStateToProps = ({ tldr, page, lastPage }) => ({
     tldr,
-    page
+    page,
+    lastPage
 });
 
-export default connect(mapStateToProps)(SpeechBubble);
+const mapDispatchToProps = (dispatch) => ({
+    onSetPage: (page) => () => dispatch(setPage(page)),
+    onToggleTLDR: () => dispatch(toggleTLDR())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SpeechBubble);

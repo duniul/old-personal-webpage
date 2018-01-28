@@ -23,11 +23,26 @@
     margin-left: 8px !important;
 }
 
+.options {
+    font-size: 1.6em;
+    font-weight: 600;
+    line-height: 1.6em;
+}
+
+.options .option {
+    text-decoration: none !important;
+}
+
 .presentation-text p {
     margin: 0 0 1em;
     font-size: 1.6em;
     font-weight: 400;
     transition: color 300ms linear;
+}
+
+.presentation-text img {
+    transition: opacity 300ms linear;
+
 }
 
 .presentation-text .highlighted {
@@ -46,20 +61,24 @@
     color: rgba(0, 0, 0, 0.15);
 }
 
-.presentation .tldr-button.button {
+.presentation-text.tldr img {
+    opacity: 0.15;
+}
+
+.presentation .options .tldr-button.button {
     min-width: 210px;
     transition: background-color 300ms linear;
 }
 
-.presentation .tldr-button.button:hover {
+.presentation .options .tldr-button.button:hover {
     background-color: #cdcecf !important;
 }
 
-.presentation .tldr-button.active.button {
+.presentation .options .tldr-button.active.button {
     background-color: #00a79d !important;
 }
 
-.presentation .tldr-button.active.button:hover {
+.presentation .options .tldr-button.active.button:hover {
     background-color: #009389 !important;
 }
 
