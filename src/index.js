@@ -13,7 +13,7 @@ const renderApp = AppComponent => {
 };
 
 if (process.env.NODE_ENV === 'production') {
-    ReactGA.initialize('UA-000000-01');
+    ReactGA.initialize('UA-113136326-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
