@@ -3,6 +3,7 @@ import React from 'react';
 import AvatarConfused from '../assets/avatar-confused.svg';
 import AvatarDisappointed from '../assets/avatar-disappointed.svg';
 import AvatarHappy from '../assets/avatar-happy.svg';
+import { simpleDebounce } from '../util';
 import './avatar.css';
 
 const avatarMoods = [
@@ -11,12 +12,13 @@ const avatarMoods = [
     AvatarHappy
 ];
 
-const totalTransitionMs = 300;
+const totalTransitionMs = 200;
 const transitionStepMs = totalTransitionMs / (avatarMoods.length - 1);
 
 class Avatar extends React.PureComponent {
     constructor(props) {
         super(props);
+        this.debouncedTransition = simpleDebounce(this.runMoodTransition, transitionStepMs / 2);
         this.state = {
             moodIndex: avatarMoods.length - 1
         };
@@ -24,12 +26,15 @@ class Avatar extends React.PureComponent {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.happy !== nextProps.happy) {
-            this.startMoodTransition();
+            this.debouncedTransition();
         }
     }
 
-    startMoodTransition = () => {
-        this.transition = setInterval(this.triggerTransitionStep, transitionStepMs);
+    runMoodTransition = () => {
+        setTimeout(() => {
+            this.transition = requestAnimationFrame(this.runMoodTransition);
+            this.triggerTransitionStep();
+        }, transitionStepMs);
     };
 
     triggerTransitionStep = () => {
@@ -39,7 +44,7 @@ class Avatar extends React.PureComponent {
                 return { moodIndex: newMoodIndex };
             }
 
-            clearInterval(this.transition);
+            cancelAnimationFrame(this.transition);
         });
     };
 
