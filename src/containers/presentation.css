@@ -50,7 +50,7 @@
 }
 
 .presentation-text a.highlighted {
-    text-decoration: underline;
+    border-bottom: 1px solid;
 }
 
 .presentation-text a.highlighted:hover {

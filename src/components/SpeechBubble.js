@@ -8,6 +8,20 @@ import { PAGES } from '../common/constants';
 import { setPage, toggleTLDR } from '../redux/actions';
 import './speech-bubble.css';
 
+const sharedLinkProps = { target: '_blank', rel: 'noopener noreferrer' };
+
+const linkProps = {
+    nexus: { ...sharedLinkProps, href: "https://www.nexusmods.com/fallout4/users/935126?tab=user+files" },
+    craftingWorkbenches: { ...sharedLinkProps, href: "https://www.nexusmods.com/fallout4/mods/2451" },
+    companionTracking: { ...sharedLinkProps, href: "https://www.nexusmods.com/fallout4/mods/7903" },
+    settlerRenaming: { ...sharedLinkProps, href: "https://www.nexusmods.com/fallout4/mods/2017" },
+    vot: { ...sharedLinkProps, href: "https://www.nexusmods.com/fallout4/mods/2173" },
+    awkcr: { ...sharedLinkProps, href: "https://www.nexusmods.com/fallout4/mods/6091" },
+    gameEngine: { ...sharedLinkProps, href: "https://github.com/gronstrand/sp6-vt2016-gameengine" },
+    hadoukatt: { ...sharedLinkProps, href: "https://github.com/gronstrand/sp6-vt2016-hadoukatt" },
+    gronstrandCom: { ...sharedLinkProps, href: "https://github.com/gronstrand/gronstrand-com" },
+};
+
 class SpeechBubble extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -95,13 +109,15 @@ class SpeechBubble extends React.PureComponent {
                         However, there are others that I have been working on during my spare time which I am able to share.
                     </p>
                     <p>
-                        I <span className="highlighted">wrote a game engine</span> from scratch in Java, and <span className="highlighted">created my own game with it</span>.
+                        I <a className="highlighted" {...linkProps.gameEngine}>wrote a game engine</a> from scratch in Java,
+                        and <a className="highlighted" {...linkProps.hadoukatt}>created my own game with it</a>.
                         The game is like a poor man's Duck Game where you play as a cat shooting other cats
                         with <img src={Hadouken} alt="" style={{ height: '0.8em' }} /> hadoukens.
-                        Since I only had about two weeks to make both the engine and the game, I didn't have time polish it enough. Maybe I'll pick it up again some day?
+                        Since I only had about two weeks to make both the engine and the game, I didn't
+                        have time polish it enough. Maybe I'll pick it up again some day?
                     </p>
                     <p>
-                        Finally, there's <span className="highlighted">this website</span>.
+                        Finally, there's <a className="highlighted" {...linkProps.gronstrandCom}>this website</a>.
                         It's a new project of mine, and hopefully it will grow into something nice.
                     </p>
                 </div>
@@ -117,11 +133,12 @@ class SpeechBubble extends React.PureComponent {
                 <div className={`presentation-text ${tldr ? 'tldr' : ''}`}>
                     <p>
                         If there is something I feel like I am missing in a game, you can be sure that I will try to either find a way to fix it, or create one on my own.
-                        I usually don't release them, but <span className="highlighted">I made some mods for Fallout 4</span> that I thought could be useful to others.
+                        I usually don't release them, but <a className="highlighted"  {...linkProps.nexus}>I made some mods for Fallout 4</a> that I thought could
+                        be useful to others.
                     </p>
 
                     <p>
-                        The most popular one is <span className="highlighted">Crafting Workbenches</span>, which allows players
+                        The most popular one is <a className="highlighted" {...linkProps.craftingWorkbenches}>Crafting Workbenches</a>, which allows players
                         to <span className="highlighted">craft items from mater&shy;ials</span>. It also serves as
                         a <span className="highlighted">plat&shy;form for modders</span> to make their own creations
                         craft&shy;able in the game. It is currently in the top 30 of the most endorsed Fallout 4 mods
@@ -129,7 +146,7 @@ class SpeechBubble extends React.PureComponent {
                     </p>
 
                     <p>
-                        The <span className="highlighted">Armor and Weapon Keywords Community Resource</span> is a frame&shy;work
+                        The <a className="highlighted" {...linkProps.awkcr}>Armor and Weapon Keywords Community Resource</a> is a frame&shy;work
                         to <span className="highlighted">help modders</span> make their creations compatible with each
                         other. I joined the project in the early stages and <span className="highlighted">contributed code</span> from Crafting Workbenches. I also created many
                         of its community patches. It is currently the <span className="highlighted">most downloaded Fallout 4 mod of all time</span>.
@@ -137,10 +154,10 @@ class SpeechBubble extends React.PureComponent {
 
                     <p>
                         I also <span className="highlighted">created a number of smaller mods</span>.
-                        One <span className="highlighted">gives players the option to track companions</span>,
+                        One <a className="highlighted" {...linkProps.companionTracking}>gives players the option to track companions</a>,
                         a feature which was later adopted by the game developers themselves.
-                        Another one <span className="highlighted">allows players to rename characters</span> in
-                        the game using simple batch commands. Finally, <span className="highlighted">lets players aim great distances</span> with
+                        Another one <a className="highlighted" {...linkProps.settlerRenaming}>allows players to rename characters</a> in
+                        the game using simple batch commands. Finally, one <a className="highlighted" {...linkProps.vot}>lets players aim great distances</a> with
                         the games assisted aiming interface, V.A.T.S.
                     </p>
                 </div>
