@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { SocialIcon } from 'react-social-icons';
-import { Button, Divider, Sticky } from 'semantic-ui-react';
+import { Button, Divider } from 'semantic-ui-react';
 import Hadouken from '../assets/hadouken.png';
 import { PAGES, URLS } from '../common/constants';
 import { setPage, toggleTLDR } from '../redux/actions';
@@ -28,7 +29,25 @@ class SpeechBubble extends React.PureComponent {
         }
     }
 
-    setRef = (ref) => this.speechBubble = ref;
+    onClickPage = (page) => () => {
+        ReactGA.event({
+            category: 'Navigation',
+            action: 'Clicked on a page button',
+            label: page
+        });
+
+        this.props.onSetPage(page);
+    };
+
+    onClickTLDR = () => {
+        ReactGA.event({
+            category: 'Button',
+            action: 'Toggled TL;DR',
+            value: Number(!this.props.tldr)
+        });
+
+        this.props.onToggleTLDR();
+    };
 
     renderHeader = (title) => {
         return (
@@ -44,7 +63,7 @@ class SpeechBubble extends React.PureComponent {
     };
 
     renderOptions = () => {
-        const { tldr, page, lastPage, onSetPage, onToggleTLDR } = this.props;
+        const { tldr, page, lastPage } = this.props;
         const pageOptions = [{
             page: PAGES.INTRO,
             title: 'Who are you again?'
@@ -58,20 +77,18 @@ class SpeechBubble extends React.PureComponent {
 
         return (
             <div className="options">
-                <Sticky context={this.speechBubble}>
-                    <Divider />
-                </Sticky>
+                <Divider />
                 <Button.Group fluid vertical compact>
                     {pageOptions
                         .filter(option => option.page !== (this.state.faded ? lastPage : page))
                         .map(option => {
                             return (
-                                <Button key={option.page} size="big" onClick={onSetPage(option.page)} style={{ marginBottom: 4 }}>
+                                <Button key={option.page} size="big" onClick={this.onClickPage(option.page)} style={{ marginBottom: 4 }}>
                                     -&ensp;{option.title}
                                 </Button>
                             );
                         })}
-                    <Button className="tldr-button" size="big" onClick={onToggleTLDR} style={{ marginBottom: 4 }} toggle active={tldr}>
+                    <Button className="tldr-button" size="big" onClick={this.onClickTLDR} style={{ marginBottom: 4 }} toggle active={tldr}>
                         -&ensp;{tldr ? 'Sorry, you can talk again.' : 'TL;DR'}
                     </Button>
                 </Button.Group>
@@ -101,7 +118,7 @@ class SpeechBubble extends React.PureComponent {
                     </p>
                     <p>
                         I <Highlight color="blue" url={URLS.GAME_ENGINE}>wrote a game engine</Highlight> from scratch in Java,{' '}
-                        and <Highlight color="blue" url={URLS.HADOUKATT}>created  a game with it</Highlight>.{' '}
+                        and <Highlight color="blue" url={URLS.HADOUKATT}>created a game with it</Highlight>.{' '}
                         The game is like a poor man's Duck Game where you play as a cat shooting other cats{' '}
                         with <img src={Hadouken} alt="" style={{ height: '0.8em' }} /> hadoukens.{' '}
                         Since I only had about two weeks to make both the engine and the game, I didn't{' '}
@@ -200,7 +217,7 @@ class SpeechBubble extends React.PureComponent {
     render() {
         const { faded } = this.state;
         return (
-            <div className="speech-bubble" style={{ opacity: faded ? 0 : 1 }} ref={this.setRef}>
+            <div className="speech-bubble" style={{ opacity: faded ? 0 : 1 }}>
                 {this.getPageContent()}
                 {this.renderOptions()}
             </div>
@@ -223,7 +240,7 @@ const mapStateToProps = ({ tldr, page, lastPage }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSetPage: (page) => () => dispatch(setPage(page)),
+    onSetPage: (page) => dispatch(setPage(page)),
     onToggleTLDR: () => dispatch(toggleTLDR())
 });
 
