@@ -43,7 +43,7 @@ class SpeechBubble extends React.PureComponent {
         ReactGA.event({
             category: 'Button',
             action: 'Toggled TL;DR',
-            value: Number(!this.props.tldr)
+            label: String(this.props.tldr)
         });
 
         this.props.onToggleTLDR();
