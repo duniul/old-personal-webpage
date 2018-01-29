@@ -1,0 +1,29 @@
+
+.highlight {
+    font-weight: 600;
+}
+
+a.highlight {
+    border-bottom: 1px dashed;
+}
+
+a.highlight:hover {
+    border-bottom: 2px solid;
+}
+
+/* colors */
+.highlight.teal {
+    color: #00b5ad !important;
+}
+
+.highlight.orange {
+    color: #fba63a !important;
+}
+
+.highlight.blue {
+    color: #2185d0 !important;
+}
+
+.highlight.pink {
+    color: #e03997 !important;
+}

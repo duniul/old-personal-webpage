@@ -1,10 +1,10 @@
 .presentation {
-    padding: 8em 2em 0;
+    padding: 4em 2em 2em;
 }
 
 .presentation-header {
     text-align: left;
-    font-size: 4em;
+    font-size: 3.6em;
     font-weight: 600;
     margin-bottom: 0.2em;
 }
@@ -23,14 +23,8 @@
     margin-left: 8px !important;
 }
 
-.options {
-    font-size: 1.6em;
-    font-weight: 600;
-    line-height: 1.6em;
-}
-
-.options .option {
-    text-decoration: none !important;
+.presentation .options button {
+    text-align: left;
 }
 
 .presentation-text p {
@@ -43,18 +37,6 @@
 .presentation-text img {
     transition: opacity 300ms linear;
 
-}
-
-.presentation-text .highlighted {
-    color: #00a79d;
-}
-
-.presentation-text a.highlighted {
-    border-bottom: 1px solid;
-}
-
-.presentation-text a.highlighted:hover {
-    color: #006769;
 }
 
 .presentation-text.tldr p {

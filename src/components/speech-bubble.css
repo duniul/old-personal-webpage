@@ -1,6 +1,6 @@
 .speech-bubble {
     background: #EEEEEE;
-    padding: 3em;
+    padding: 1.6em 3em;
     border-radius: .8em;
     box-shadow: 2px 3px 2px 0 rgba(34,36,38,.15);
     transition: opacity 300ms linear;
