@@ -16,6 +16,7 @@
     "react-scripts": "1.1.0",
     "react-social-icons": "^2.8.1",
     "redux": "^3.7.2",
+    "semantic-ui-css": "^2.2.14",
     "semantic-ui-react": "^0.77.2"
   },
   "devDependencies": {
