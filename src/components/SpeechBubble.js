@@ -105,7 +105,7 @@ class SpeechBubble extends React.Component {
       <div className="options">
         <Divider />
         <Button.Group fluid vertical compact>
-          {options.filter(option => option.path !== this.props.location.pathName).map(option => (
+          {options.filter(option => option.path !== this.props.location.pathname).map(option => (
             <Button
               key={option.path}
               size="big"
