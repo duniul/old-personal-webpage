@@ -2,15 +2,22 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import { Button, Divider } from 'semantic-ui-react';
 import Hadouken from '../assets/hadouken.png';
-import { PAGES, URLS } from '../common/constants';
+import { URLS } from '../common/constants';
 import { setPage, toggleTLDR } from '../redux/actions';
 import Highlight from './Highlight';
 import './speech-bubble.css';
 
-class SpeechBubble extends React.PureComponent {
+const paths = {
+  ME: '/me',
+  MODS: '/mods',
+  PROJECTS: '/projects',
+};
+
+class SpeechBubble extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,25 +25,42 @@ class SpeechBubble extends React.PureComponent {
     };
   }
 
+  shouldComponentUpdate = (nextProps, nextState) => {
+    if (nextProps.tldr !== this.props.tldr) {
+      return true;
+    }
+
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      return true;
+    }
+
+    if (nextState.faded !== this.state.faded) {
+      return true;
+    }
+
+    return false;
+  };
+
   componentDidMount() {
     setTimeout(() => this.setState({ faded: false }), 600);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.page !== nextProps.page) {
-      this.setState({ faded: true });
-      setTimeout(() => this.setState({ faded: false }), 300);
+  onClickOption = path => () => {
+    if (path === this.props.location.pathname) {
+      return;
     }
-  }
 
-  onClickPage = page => () => {
     ReactGA.event({
       category: 'Navigation',
       action: 'Clicked on a page button',
-      label: page,
+      label: path,
     });
 
-    this.props.onSetPage(page);
+    this.setState({ faded: true });
+    setTimeout(() => {
+      this.props.history.push(path);
+      this.setState({ faded: false });
+    }, 300);
   };
 
   onClickTLDR = () => {
@@ -63,18 +87,18 @@ class SpeechBubble extends React.PureComponent {
   };
 
   renderOptions = () => {
-    const { tldr, page, lastPage } = this.props;
-    const pageOptions = [
+    const { tldr } = this.props;
+    const options = [
       {
-        page: PAGES.INTRO,
+        path: paths.ME,
         title: 'Who are you again?',
       },
       {
-        page: PAGES.MODS,
+        path: paths.MODS,
         title: 'Tell me more about those mods.',
       },
       {
-        page: PAGES.PROJECTS,
+        path: paths.PROJECTS,
         title: 'What else have you done?',
       },
     ];
@@ -83,21 +107,18 @@ class SpeechBubble extends React.PureComponent {
       <div className="options">
         <Divider />
         <Button.Group fluid vertical compact>
-          {pageOptions
-            .filter(option => option.page !== (this.state.faded ? lastPage : page))
-            .map(option => {
-              return (
-                <Button
-                  key={option.page}
-                  size="big"
-                  onClick={this.onClickPage(option.page)}
-                  style={{ marginBottom: 4 }}
-                >
-                  -&ensp;
-                  {option.title}
-                </Button>
-              );
-            })}
+          {options.filter(option => option.path !== this.props.location.pathName).map(option => (
+            <Button
+              key={option.path}
+              size="big"
+              onClick={this.onClickOption(option.path)}
+              style={{ marginBottom: 4 }}
+            >
+              -&ensp;
+              {option.title}
+            </Button>
+          ))}
+
           <Button
             className="tldr-button"
             size="big"
@@ -253,25 +274,16 @@ class SpeechBubble extends React.PureComponent {
     );
   };
 
-  getPageContent = () => {
-    const { page, lastPage } = this.props;
-    const pageToShow = this.state.faded ? lastPage : page;
-    switch (pageToShow) {
-      case PAGES.INTRO:
-        return this.renderIntroPage();
-      case PAGES.MODS:
-        return this.renderModsPage();
-      case PAGES.PROJECTS:
-        return this.renderProjectsPage();
-      default:
-    }
-  };
-
   render() {
     const { faded } = this.state;
     return (
       <div className="speech-bubble" style={{ opacity: faded ? 0 : 1 }}>
-        {this.getPageContent()}
+        <Switch>
+          <Route exact path={paths.ME} render={this.renderIntroPage} />
+          <Route exact path={paths.MODS} render={this.renderModsPage} />
+          <Route exact path={paths.PROJECTS} render={this.renderProjectsPage} />
+          <Redirect to={paths.ME} />
+        </Switch>
         {this.renderOptions()}
       </div>
     );
@@ -280,16 +292,14 @@ class SpeechBubble extends React.PureComponent {
 
 SpeechBubble.propTypes = {
   tldr: PropTypes.bool,
-  page: PropTypes.string,
-  lastPage: PropTypes.string,
   onSetPage: PropTypes.func,
   onToggleTLDR: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
 };
 
-const mapStateToProps = ({ tldr, page, lastPage }) => ({
+const mapStateToProps = ({ tldr }) => ({
   tldr,
-  page,
-  lastPage,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -297,7 +307,9 @@ const mapDispatchToProps = dispatch => ({
   onToggleTLDR: () => dispatch(toggleTLDR()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SpeechBubble);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SpeechBubble)
+);

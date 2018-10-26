@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 import { Container, Grid } from 'semantic-ui-react';
 import Avatar from '../components/Avatar';
 import SpeechBubble from '../components/SpeechBubble';
 import { toggleTLDR } from '../redux/actions';
 import './presentation.css';
 
-class Presentation extends React.PureComponent {
+class Presentation extends React.Component {
   render() {
     return (
       <Container className="presentation">
@@ -39,7 +40,9 @@ const mapDispatchToProps = dispatch => ({
   onToggleTLDR: () => dispatch(toggleTLDR()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Presentation);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Presentation)
+);
