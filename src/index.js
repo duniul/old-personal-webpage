@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import 'semantic-ui-css/semantic.min.css';
-import Main from './Main';
-import './main.css';
+import App from './App';
+import './base.css';
 import registerServiceWorker from './registerServiceWorker';
 
 const rootElement = document.getElementById('root');
@@ -17,12 +17,12 @@ if (process.env.NODE_ENV === 'production') {
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
-renderApp(Main);
+renderApp(App);
 registerServiceWorker();
 
 if (module.hot) {
-  module.hot.accept('./Main', () => {
-    const NewRoot = require('./Main').default;
+  module.hot.accept('./App', () => {
+    const NewRoot = require('./App').default;
     renderApp(NewRoot);
   });
 }

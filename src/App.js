@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Presentation from './containers/Presentation';
 
-class Main extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="main">
+      <div className="app">
         <BrowserRouter>
           <Presentation />
         </BrowserRouter>
@@ -14,4 +14,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default App;
