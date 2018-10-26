@@ -1,10 +1,4 @@
-export const PAGES = {
-  INTRO: 'intro',
-  MODS: 'mods',
-  PROJECTS: 'projects',
-};
-
-export const URLS = {
+export const urls = {
   NEXUS: 'https://www.nexusmods.com/fallout4/users/935126?tab=user+files',
   CRAFTING_WORKBENCHES: 'https://www.nexusmods.com/fallout4/mods/2451',
   COMPANION_TRACKING: 'https://www.nexusmods.com/fallout4/mods/7903',

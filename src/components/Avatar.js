@@ -49,8 +49,6 @@ class Avatar extends React.PureComponent {
     const { moodIndex } = this.state;
     return (
       <Transition visible animation="tada" duration={600} transitionOnMount>
-        {/*<img className="avatar" alt="" src={avatarMoods[this.state.moodIndex]} />*/}
-
         <svg className="avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 204.5 321.5">
           <title>Avatar</title>
 

@@ -5,7 +5,7 @@ import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import { Button, Divider } from 'semantic-ui-react';
 import Hadouken from '../assets/hadouken.png';
-import { URLS } from '../common/constants';
+import { urls } from '../constants';
 import Highlight from './Highlight';
 import './speech-bubble.css';
 
@@ -161,11 +161,11 @@ class SpeechBubble extends React.Component {
           </p>
           <p>
             I{' '}
-            <Highlight color="blue" url={URLS.GAME_ENGINE}>
+            <Highlight color="blue" url={urls.GAME_ENGINE}>
               wrote a game engine
             </Highlight>{' '}
             from scratch in Java, and{' '}
-            <Highlight color="blue" url={URLS.HADOUKATT}>
+            <Highlight color="blue" url={urls.HADOUKATT}>
               created a game with it
             </Highlight>
             . The game is like a poor man's Duck Game where you play as a cat shooting other cats{' '}
@@ -175,7 +175,7 @@ class SpeechBubble extends React.Component {
           </p>
           <p>
             Finally, there's{' '}
-            <Highlight color="blue" url={URLS.GRONSTRAND_COM_GITHUB}>
+            <Highlight color="blue" url={urls.GRONSTRAND_COM_GITHUB}>
               this website
             </Highlight>
             . It's a new project of mine, and hopefully it will grow into something nice.
@@ -199,7 +199,7 @@ class SpeechBubble extends React.Component {
 
           <p>
             The most popular one is{' '}
-            <Highlight color="teal" url={URLS.CRAFTING_WORKBENCHES}>
+            <Highlight color="teal" url={urls.CRAFTING_WORKBENCHES}>
               Crafting Workbenches
             </Highlight>
             , which allows players to <Highlight color="teal">craft items</Highlight> from
@@ -211,7 +211,7 @@ class SpeechBubble extends React.Component {
           </p>
 
           <p>
-            <Highlight color="pink" url={URLS.AWKCR}>
+            <Highlight color="pink" url={urls.AWKCR}>
               AWKCR
             </Highlight>{' '}
             is a <Highlight color="pink">frame&shy;work to help modders</Highlight> make their
@@ -224,16 +224,16 @@ class SpeechBubble extends React.Component {
           <p>
             I also created a number of <Highlight color="orange">smaller mods</Highlight>. One lets
             players{' '}
-            <Highlight color="orange" url={URLS.COMPANION_TRACKING}>
+            <Highlight color="orange" url={urls.COMPANION_TRACKING}>
               track companions
             </Highlight>
             , a feature which was later adopted by the game developers themselves. Another one
             allows players to{' '}
-            <Highlight color="orange" url={URLS.SETTLER_RENAMING}>
+            <Highlight color="orange" url={urls.SETTLER_RENAMING}>
               rename characters
             </Highlight>{' '}
             in the game using simple batch commands. Finally, one lets players{' '}
-            <Highlight color="orange" url={URLS.VOT}>
+            <Highlight color="orange" url={urls.VOT}>
               aim great distances
             </Highlight>{' '}
             with the games assisted aiming interface, V.A.T.S.

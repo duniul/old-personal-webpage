@@ -1,4 +1,4 @@
-export const simpleDebounce = (func, delayMs) => {
+const simpleDebounce = (func, delayMs) => {
   let currentTimeout;
   return () => {
     clearTimeout(currentTimeout);
@@ -7,3 +7,5 @@ export const simpleDebounce = (func, delayMs) => {
     }, delayMs);
   };
 };
+
+export default simpleDebounce;
