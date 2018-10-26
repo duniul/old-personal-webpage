@@ -7,7 +7,7 @@ import AvatarEyes from './AvatarEyes';
 import AvatarMouth from './AvatarMouth';
 import AvatarNose from './AvatarNose';
 
-const avatarMoods = ['SAD', 'MIDDLE', 'HAPPY'];
+const avatarMoods = ['sad', 'middle', 'happy'];
 
 const totalTransitionMs = 200;
 const transitionStepMs = totalTransitionMs / (avatarMoods.length - 1);
@@ -101,7 +101,7 @@ class Avatar extends React.PureComponent {
 }
 
 Avatar.propTypes = {
-  tldr: PropTypes.bool,
+  tldr: PropTypes.bool.isRequired,
 };
 
 export default Avatar;

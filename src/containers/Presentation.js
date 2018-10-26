@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Container, Grid } from 'semantic-ui-react';
@@ -37,10 +36,5 @@ class Presentation extends React.Component {
     );
   }
 }
-
-Presentation.propTypes = {
-  tldr: PropTypes.bool,
-  onToggleTLDR: PropTypes.func,
-};
 
 export default withRouter(Presentation);

@@ -289,10 +289,10 @@ class SpeechBubble extends React.Component {
 }
 
 SpeechBubble.propTypes = {
-  tldr: PropTypes.bool,
-  toggleTldr: PropTypes.func,
-  history: PropTypes.object,
-  location: PropTypes.object,
+  toggleTldr: PropTypes.func.isRequired,
+  tldr: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(SpeechBubble);

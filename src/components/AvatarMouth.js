@@ -1,8 +1,9 @@
 import React from 'react';
 import './avatar.css';
+import { PropTypes } from 'prop-types';
 
 export const MOUTHS = {
-  HAPPY: (
+  happy: (
     <g id="avatar-mouth-happy" data-name="avatar-mouth">
       <rect className="teeth" x="70.8" y="139.1" width="88.6" height="18.52" />
       <path
@@ -27,7 +28,7 @@ export const MOUTHS = {
       />
     </g>
   ),
-  MIDDLE: (
+  middle: (
     <g id="avatar-mouth-middle" data-name="avatar-mouth">
       <rect className="teeth" x="70.8" y="137.8" width="88.6" height="14.63" />
       <path
@@ -48,7 +49,7 @@ export const MOUTHS = {
       />
     </g>
   ),
-  SAD: (
+  sad: (
     <g id="avatar-mouth-sad" data-name="avatar-mouth">
       <path
         className="skin dark"
@@ -59,5 +60,9 @@ export const MOUTHS = {
 };
 
 const AvatarMouth = ({ mood }) => MOUTHS[mood];
+
+AvatarMouth.propTypes = {
+  mood: PropTypes.oneOf('happy', 'middle', 'sad'),
+};
 
 export default AvatarMouth;

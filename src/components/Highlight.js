@@ -24,9 +24,14 @@ const Highlight = ({ children, color, url }) => {
 };
 
 Highlight.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   color: PropTypes.string,
   url: PropTypes.string,
+};
+
+Highlight.defaultProps = {
+  color: 'blue',
+  url: undefined,
 };
 
 export default Highlight;
