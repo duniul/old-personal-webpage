@@ -8,35 +8,38 @@ import { toggleTLDR } from '../redux/actions';
 import './presentation.css';
 
 class Presentation extends React.PureComponent {
-    render() {
-        return (
-            <Container className="presentation">
-                <Grid relaxed stackable>
-                    <Grid.Row>
-                        <Grid.Column width={4}>
-                            <Avatar />
-                        </Grid.Column>
-                        <Grid.Column width={12}>
-                            <SpeechBubble />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Container>
-        );
-    }
+  render() {
+    return (
+      <Container className="presentation">
+        <Grid relaxed stackable>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              <Avatar />
+            </Grid.Column>
+            <Grid.Column width={12}>
+              <SpeechBubble />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
+    );
+  }
 }
 
 Presentation.propTypes = {
-    tldr: PropTypes.bool,
-    onToggleTLDR: PropTypes.func
+  tldr: PropTypes.bool,
+  onToggleTLDR: PropTypes.func,
 };
 
 const mapStateToProps = ({ tldr }) => ({
-    tldr
+  tldr,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onToggleTLDR: () => dispatch(toggleTLDR())
+const mapDispatchToProps = dispatch => ({
+  onToggleTLDR: () => dispatch(toggleTLDR()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Presentation);
