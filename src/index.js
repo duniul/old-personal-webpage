@@ -4,13 +4,12 @@ import ReactGA from 'react-ga';
 import 'semantic-ui-css/semantic.min.css';
 import Main from './Main';
 import './main.css';
-import configureStore from './redux/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = configureStore();
 const rootElement = document.getElementById('root');
+
 const renderApp = AppComponent => {
-  ReactDOM.render(<AppComponent store={store} />, rootElement);
+  ReactDOM.render(<AppComponent />, rootElement);
 };
 
 if (process.env.NODE_ENV === 'production') {

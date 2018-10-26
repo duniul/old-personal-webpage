@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 import { Transition } from 'semantic-ui-react';
 import { simpleDebounce } from '../common/util';
 import './avatar.css';
@@ -105,8 +104,4 @@ Avatar.propTypes = {
   tldr: PropTypes.bool,
 };
 
-const mapStateToProps = ({ tldr }) => ({
-  tldr,
-});
-
-export default connect(mapStateToProps)(Avatar);
+export default Avatar;

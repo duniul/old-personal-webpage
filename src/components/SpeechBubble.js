@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactGA from 'react-ga';
-import { connect } from 'react-redux';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import { Button, Divider } from 'semantic-ui-react';
 import Hadouken from '../assets/hadouken.png';
 import { URLS } from '../common/constants';
-import { setPage, toggleTLDR } from '../redux/actions';
 import Highlight from './Highlight';
 import './speech-bubble.css';
 
@@ -63,14 +61,14 @@ class SpeechBubble extends React.Component {
     }, 300);
   };
 
-  onClickTLDR = () => {
+  onClickTldr = () => {
     ReactGA.event({
       category: 'Button',
       action: 'Toggled TL;DR',
       label: String(this.props.tldr),
     });
 
-    this.props.onToggleTLDR();
+    this.props.toggleTldr();
   };
 
   renderHeader = title => {
@@ -122,7 +120,7 @@ class SpeechBubble extends React.Component {
           <Button
             className="tldr-button"
             size="big"
-            onClick={this.onClickTLDR}
+            onClick={this.onClickTldr}
             style={{ marginBottom: 4 }}
             toggle
             active={tldr}
@@ -292,24 +290,9 @@ class SpeechBubble extends React.Component {
 
 SpeechBubble.propTypes = {
   tldr: PropTypes.bool,
-  onSetPage: PropTypes.func,
-  onToggleTLDR: PropTypes.func,
+  toggleTldr: PropTypes.func,
   history: PropTypes.object,
   location: PropTypes.object,
 };
 
-const mapStateToProps = ({ tldr }) => ({
-  tldr,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onSetPage: page => dispatch(setPage(page)),
-  onToggleTLDR: () => dispatch(toggleTLDR()),
-});
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SpeechBubble)
-);
+export default withRouter(SpeechBubble);
