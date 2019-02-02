@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Transition } from 'semantic-ui-react';
-import { simpleDebounce } from '../common/util';
+import simpleDebounce from '../util/simpleDebounce';
 import './avatar.css';
 import AvatarEyes from './AvatarEyes';
 import AvatarMouth from './AvatarMouth';
