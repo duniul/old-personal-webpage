@@ -252,7 +252,7 @@ class SpeechBubble extends React.Component {
           <p>
             A <Highlight color="blue">Swedish</Highlight> man who likes to tinker with things, like
             code, hard&shy;ware or Legos. I currently work as a{' '}
-            <Highlight color="blue">full-stack developer</Highlight> at Com Hem, in{' '}
+            <Highlight color="blue">full-stack developer</Highlight> at Acast, in{' '}
             <Highlight color="blue">Stockholm</Highlight>.
           </p>
           <p>
