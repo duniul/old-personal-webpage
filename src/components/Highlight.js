@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { OutboundLink } from 'react-ga';
+import { Link } from 'react-router-dom';
 import './highlight.css';
 
 const Highlight = ({ children, color, url }) => {
@@ -8,15 +8,9 @@ const Highlight = ({ children, color, url }) => {
 
   if (url) {
     return (
-      <OutboundLink
-        className={className}
-        eventLabel="Clicked a link"
-        to={url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link className={className} to={url} target="_blank" rel="noopener noreferrer">
         {children}
-      </OutboundLink>
+      </Link>
     );
   }
 

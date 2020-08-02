@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactGA from 'react-ga';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import { Button, Divider } from 'semantic-ui-react';
@@ -48,12 +47,6 @@ class SpeechBubble extends React.Component {
       return;
     }
 
-    ReactGA.event({
-      category: 'Navigation',
-      action: 'Clicked on a page button',
-      label: path,
-    });
-
     this.setState({ faded: true });
     setTimeout(() => {
       this.props.history.push(path);
@@ -62,12 +55,6 @@ class SpeechBubble extends React.Component {
   };
 
   onClickTldr = () => {
-    ReactGA.event({
-      category: 'Button',
-      action: 'Toggled TL;DR',
-      label: String(this.props.tldr),
-    });
-
     this.props.toggleTldr();
   };
 
