@@ -76,9 +76,9 @@ class SpeechBubble extends React.Component {
       <h1 className="presentation-header">
         {title}
         <div className="social-links">
-          <SocialIcon url="mailto:daniel@gronstrand.com" color="#ef5350" />
-          <SocialIcon url="https://www.linkedin.com/in/danielgronstrand/" />
-          <SocialIcon url="https://github.com/gronstrand/" color="#24292e" />
+          <SocialIcon url="mailto:hello@danielgrefberg.com" bgColor="#ef5350" />
+          <SocialIcon url="https://www.linkedin.com/in/danielgrefberg/" />
+          <SocialIcon url="https://github.com/duniul/" bgColor="#24292e" />
         </div>
       </h1>
     );
