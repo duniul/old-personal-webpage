@@ -1,4 +1,4 @@
-![Site example](site-example.png)
+![Site example](preview.png)
 
 # old-personal-webpage
 
