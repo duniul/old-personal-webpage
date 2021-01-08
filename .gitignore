@@ -22,3 +22,5 @@ yarn-error.log*
 
 # intellij
 /.idea
+
+/src_old
