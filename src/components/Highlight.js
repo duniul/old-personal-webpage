@@ -7,6 +7,14 @@ const Highlight = ({ children, color, url }) => {
   const className = `highlight ${color}`;
 
   if (url) {
+    if (url.startsWith('http')) {
+      return (
+        <a className={className} href={url} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link className={className} to={url} target="_blank" rel="noopener noreferrer">
         {children}
