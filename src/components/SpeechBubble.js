@@ -129,30 +129,33 @@ class SpeechBubble extends React.Component {
         {this.renderHeader('Other projects')}
         <div className={`presentation-text ${tldr ? 'tldr' : ''}`}>
           <p>
-            During my time at Com Hem, I built a{' '}
-            <Highlight color="pink">web-based, in-house CRM-system</Highlight> from scratch,
-            together with four other people. It's a modern, fast SPA built with React.js, Java, and
-            Oracle. The system has been my primary focus at work.
-          </p>
-          <p>
-            I have also been a part of several hackathons and side projects at Com Hem. Together
-            with some, I built an online, <Highlight color="orange">interactive map</Highlight> of
-            the company office to help new or confused employees find their way around. We also
-            created a <Highlight color="orange">web service</Highlight> for customers to{' '}
+            Other than regular professional experience I've participated in a lot of hackathons or
+            hackdays. At Com Hem I built an online,{' '}
+            <Highlight color="orange">interactive map</Highlight> of the company office to help new
+            or confused employees find their way around, as well as a{' '}
+            <Highlight color="orange">web service</Highlight> for customers to{' '}
             <Highlight color="orange">easily configure modems</Highlight>, skipping the hassle of
             manually logging in to it.
           </p>
           <p>
-            These projects were all done at and for Com Hem, so I am sadly not able to share any
-            in-depth information or source code. However, there are other things that I have been
-            working on during my spare time, which I can share.
+            At Acast I've made a lot of hacks that evolved into production features! An automated
+            "repo janitor" for <Highlight color="teal">maintaining documentation</Highlight> and
+            monorepos, <Highlight color="teal">automated per-branch environment domains</Highlight>{' '}
+            for PR requests, a <Highlight color="teal">reverse-proxy tunneling service</Highlight>{' '}
+            for hosting local environments on a public Acast domain, and a{' '}
+            <Highlight color="teal">token provider</Highlight> to help cache tokens and connect to
+            Acast's auth services.
           </p>
           <p>
-            I{' '}
+            Some of these projects were all done at and for the companies I work for, so I sadly
+            cannot share them all in public except for the ones with links.
+          </p>
+          <p>
+            I also{' '}
             <Highlight color="blue" url={urls.GAME_ENGINE}>
               wrote a game engine
             </Highlight>{' '}
-            from scratch in Java and{' '}
+            from scratch in Java once and{' '}
             <Highlight color="blue" url={urls.HADOUKATT}>
               created a game with it
             </Highlight>
@@ -242,27 +245,25 @@ class SpeechBubble extends React.Component {
         {this.renderHeader("Hello, I'm Daniel")}
         <div className={`presentation-text ${tldr ? 'tldr' : ''}`}>
           <p>
-            I'm a <Highlight color="blue">Swedish</Highlight> developer who likes to tinker with
-            things like code, hard&shy;ware, and Legos. I currently work as a{' '}
-            <Highlight color="blue">Senior Software Engineer</Highlight> at{' '}
+            I'm a <Highlight color="blue">Swedish</Highlight> developer who loves slick user
+            interfaces, CLI tools and great developer experiences. I currently work as a{' '}
+            <Highlight color="blue">Staff Engineer</Highlight> at{' '}
             <Highlight color="blue">Acast</Highlight> in{' '}
-            <Highlight color="blue">Stockholm</Highlight>. Before that, I was at Com Hem as a
-            full-stack developer.
+            <Highlight color="blue">Stockholm</Highlight>.
           </p>
           <p>
-            I think it's fair to say I'm{' '}
-            <Highlight color="orange">proficient in JavaScript</Highlight> by now, having worked
-            full-time with <Highlight color="orange">React</Highlight>,{' '}
-            <Highlight color="orange">Node</Highlight>, and{' '}
-            <Highlight color="orange">TypeScript</Highlight> for several years. Before that, I did{' '}
-            <Highlight color="orange">quite a bit of Java</Highlight>, and I love to try out new
-            languages and frame&shy;works in general.
+            <Highlight color="orange">JavaScript</Highlight> is my bread and butter, preferably with{' '}
+            <Highlight color="orange">TypeScript</Highlight>, and I've worked full-time with{' '}
+            <Highlight color="orange">Node</Highlight> and{' '}
+            <Highlight color="orange">React</Highlight> for a lot of years now. I've also gotten
+            efficient with <Highlight color="orange">Bash</Highlight> and a lot of{' '}
+            <Highlight color="orange">DevOps</Highlight> tooling.
           </p>
           <p>
-            I got into prog&shy;ramming as a hobbyist{' '}
-            <Highlight color="teal">game modder</Highlight>, and I still mod the games I play now
-            and then. Some of <Highlight color="teal">my mods</Highlight> have been more
-            success&shy;ful than others, like my Fallout 4 mods that now{' '}
+            I got into prog&shy;ramming as a <Highlight color="teal">game modder</Highlight>, and I
+            still mod the games I play every now and then. Some of{' '}
+            <Highlight color="teal">my mods</Highlight> have been more success&shy;ful than others,
+            like my Fallout 4 mods that now{' '}
             <Highlight color="teal">have millions of downloads</Highlight>.
           </p>
         </div>
